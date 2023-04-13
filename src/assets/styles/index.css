@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-base leading-[1.4];
+  }
+}
+
+@layer components {
+  .container {
+    @apply px-4 sm:w-[600px] md:w-[720px] md:px-8 lg:w-[960px] xl:w-[1140px];
+  }
+}

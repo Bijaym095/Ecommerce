@@ -1,4 +1,5 @@
 import { FC, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -31,7 +32,7 @@ const Signin: FC = () => {
       );
       console.log("signed in with email and password");
     } catch (err) {
-      console.log(err);
+      console.warn(err);
     } finally {
       reset();
     }
@@ -61,9 +62,10 @@ const Signin: FC = () => {
   }, []);
 
   return (
-    <div className="h-screen grid place-items-center">
-      <div className="border border-black">
-        <form onSubmit={handleSubmit(handleLoginSubmit)}>
+    <div className="grid h-screen place-items-center">
+      <div className="border border-black px-4 py-2">
+        <h2 className="section-title">Sign In</h2>
+        <form className="space-y-4" onSubmit={handleSubmit(handleLoginSubmit)}>
           <div>
             <input
               {...register("email")}
@@ -85,10 +87,22 @@ const Signin: FC = () => {
           <button>Login</button>
         </form>
         <a href="#">Forgot Password ?</a>
-        <div>-----------------OR------------</div>
-        <button onClick={handleGoogleSignIn} className="border border-black">
+
+        <div className="my-4">-----------------OR------------</div>
+
+        <button
+          onClick={handleGoogleSignIn}
+          className="mb-4 border border-black text-center"
+        >
           SignIn with Google
         </button>
+
+        <p>
+          Don't have an account ?
+          <Link className="pl-2 underline" to="/signup">
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );

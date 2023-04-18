@@ -6,12 +6,19 @@ import {
 } from "react-router-dom";
 
 import Root from "./routes/Root";
-// import Home from "./pages/Home";
 
-// import Home from "./pages/Home";
+import Home from "./pages/Home";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
 
 const router = BrowserRouter(
-  Routes(<Route path="/" element={<Root />}></Route>)
+  Routes(
+    <Route path="/" element={<Root />}>
+      <Route path="/" element={<Home />} />
+      <Route path="/signin" element={<Signin />} />
+      <Route path="/signup" element={<Signup />} />
+    </Route>
+  )
 );
 
 const App = () => {

@@ -33,9 +33,11 @@ const Signup: FC = () => {
   };
 
   return (
-    <div className="grid place-items-center h-screen">
-      <div className="border border-red-500">
-        <form onSubmit={handleSubmit(onSubmit)}>
+    <div className="grid h-screen place-items-center">
+      <div className="border border-black px-4 py-2">
+        <h2 className="section-title"> Sign Up</h2>
+
+        <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input
               {...register("email")}

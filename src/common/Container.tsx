@@ -7,7 +7,9 @@ interface ContainerInterface {
 }
 
 const Container: FC<ContainerInterface> = ({ className, children }) => {
-  return <div className={`container ${className}`}>{children}</div>;
+  return (
+    <div className={`container ${className ? className : ""}`}>{children}</div>
+  );
 };
 
 export default Container;

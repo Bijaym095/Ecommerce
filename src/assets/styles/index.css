@@ -4,12 +4,20 @@
 
 @layer base {
   body {
-    @apply text-base leading-[1.4];
+    @apply text-base leading-[1.5];
   }
 }
 
 @layer components {
   .container {
-    @apply px-4 sm:w-[600px] md:w-[720px] md:px-8 lg:w-[960px] xl:w-[1140px];
+    @apply px-4 sm:w-[600px] md:w-[720px] lg:w-[960px] xl:w-[1140px];
+  }
+
+  .section-padding {
+    @apply px-4 py-[32px] sm:py-[64px];
+  }
+
+  .section-title {
+    @apply mb-8 text-[1.728rem] font-bold;
   }
 }

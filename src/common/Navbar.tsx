@@ -3,14 +3,13 @@ import { NavLink } from "react-router-dom";
 import { clsx } from "clsx";
 
 import { AiOutlineSearch } from "react-icons/ai";
-import { BsFillPersonFill } from "react-icons/bs";
-import { BiShoppingBag } from "react-icons/bi";
+import { BsCart2, BsFillPersonFill } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 
 import Container from "../common/Container";
 
 const Navbar: FC = () => {
-  const [isToggled, setIsToggled] = useState(false);
+  const [isToggled, setIsToggled] = useState<boolean>(false);
 
   const handleToggleNav = () => {
     setIsToggled((prev) => !prev);
@@ -26,7 +25,7 @@ const Navbar: FC = () => {
         <div
           className={clsx(
             "fixed z-[99] lg:static",
-            `${isToggled ? "-left-[250px]" : "left-0"} bottom-0 top-0 `,
+            `${isToggled ? "left-0" : "-left-[250px]"} bottom-0 top-0 `,
             "h-full w-[250px] bg-blue-400 transition-all duration-300 lg:bg-white"
           )}
         >
@@ -65,7 +64,7 @@ const Navbar: FC = () => {
           </button>
 
           <button>
-            <BiShoppingBag />
+            <BsCart2 />
           </button>
         </div>
 

@@ -8,12 +8,12 @@ import Cards from "../assets/images/cards.png";
 import Container from "../common/Container";
 
 const Footer: FC = () => {
-  const footerTitleStyles = "font-bold capitalize mb-6";
+  const footerTitleStyles = "font-bold text-[1.2rem] capitalize mb-4";
 
   return (
     <footer className="bg-black text-white">
-      <Container className="grid gap-4 py-5 sm:grid-cols-2 lg:grid-cols-4">
-        {/* footer-links */}
+      {/* footer-links */}
+      <Container className="grid gap-4 py-8 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <NavLink className="mb-4 inline-block text-lg font-bold" to="/">
             Ecommerce
@@ -85,6 +85,8 @@ const Footer: FC = () => {
           </ul>
         </div>
 
+        {/* About */}
+
         {/* Accounts */}
         <div>
           <h5 className={`${footerTitleStyles}`}>My Account</h5>
@@ -107,6 +109,7 @@ const Footer: FC = () => {
             </li>
           </ul>
         </div>
+        {/* Accounts */}
 
         {/* App-details */}
         <div>
@@ -140,8 +143,9 @@ const Footer: FC = () => {
 
           <img src={`${Cards}`} alt="cards-alt" />
         </div>
-        {/* footer-links */}
+        {/* App-details */}
       </Container>
+      {/* footer-links */}
 
       <Container className="flex items-center justify-center py-5">
         <p className="text-center">

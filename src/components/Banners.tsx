@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { Link } from "react-router-dom";
 
 import Container from "../common/Container";
@@ -16,7 +15,7 @@ interface BannerContentInterface {
   linkTo: string;
 }
 
-const Banners: FC = () => {
+const Banners: React.FC = () => {
   const BANNER_CONTENTS: BannerContentInterface[] = [
     {
       thumbnailImageSrc: BannerImage1,

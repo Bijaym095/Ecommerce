@@ -1,12 +1,9 @@
-import { FC } from "react";
-import { ReactNode } from "react";
-
 interface ContainerInterface {
   className?: string;
-  children: ReactNode | string;
+  children: React.ReactNode | string;
 }
 
-const Container: FC<ContainerInterface> = ({ className, children }) => {
+const Container: React.FC<ContainerInterface> = ({ className, children }) => {
   return (
     <div className={`container ${className ? className : ""}`}>{children}</div>
   );

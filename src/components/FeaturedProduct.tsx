@@ -1,11 +1,9 @@
-import { FC } from "react";
-
 import Container from "../common/Container";
 import ProductCard, { ProductCardDataInterface } from "../common/ProductCard";
 
 import ProductImage1 from "../assets/images/banner-2.jpeg";
 
-const FeaturedProduct: FC = () => {
+const FeaturedProduct: React.FC = () => {
   const FEATURED_PRODUCT_DATA: ProductCardDataInterface[] = [
     {
       imgSrc: ProductImage1,

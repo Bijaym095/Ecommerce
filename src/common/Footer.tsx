@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
@@ -8,6 +8,8 @@ import Cards from "../assets/images/cards.png";
 import Container from "../common/Container";
 
 const Footer: FC = () => {
+  // todo:  Style google play button and appstore button
+
   const footerTitleStyles = "font-bold text-[1.2rem] capitalize mb-4";
 
   return (
@@ -115,11 +117,11 @@ const Footer: FC = () => {
         <div>
           <h5 className={`${footerTitleStyles}`}>Install App</h5>
 
-          <p className="mb-2">From App Store or Google play</p>
+          <p className="mb-4">From App Store or Google play</p>
 
-          <div className="mb-2">
+          <div className="mb-4 space-x-2">
             <NavLink
-              className="border border-white px-2 py-4"
+              className="border border-white px-4 py-2"
               type="button"
               role="button"
               target="_blank"
@@ -129,7 +131,7 @@ const Footer: FC = () => {
             </NavLink>
 
             <NavLink
-              className="border border-white px-2 py-4"
+              className="border border-white px-4 py-2"
               type="button"
               role="button"
               target="_blank"
@@ -139,7 +141,7 @@ const Footer: FC = () => {
             </NavLink>
           </div>
 
-          <p className="mb-2">Secured Payment Gateways</p>
+          <p className="mb-4">Secured Payment Gateways</p>
 
           <img src={`${Cards}`} alt="cards-alt" />
         </div>

@@ -1,7 +1,9 @@
-import { FC, useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Link, Navigate } from "react-router-dom";
 
 import { SubmitHandler, useForm } from "react-hook-form";
+
+import { FcGoogle } from "react-icons/fc";
 
 import {
   GoogleAuthProvider,
@@ -19,7 +21,7 @@ interface LoginValues {
   password: string;
 }
 
-const Signin: FC = () => {
+const Signin: React.FC = () => {
   const { setUser } = useContext(AuthContext);
   const { register, handleSubmit, reset } = useForm<LoginValues>();
 
@@ -45,7 +47,7 @@ const Signin: FC = () => {
       const result = await signInWithPopup(auth, provider);
       console.log("Created a user with GooglePopUp");
     } catch (err) {
-      console.log("Error while signingup with google", err);
+      console.warn("Error while signingup with google", err);
     }
   };
 
@@ -65,9 +67,13 @@ const Signin: FC = () => {
     <div className="grid h-screen place-items-center">
       <div className="border border-black px-4 py-2">
         <h2 className="section-title">Sign In</h2>
-        <form className="space-y-4" onSubmit={handleSubmit(handleLoginSubmit)}>
+        <form
+          className="mb-6 space-y-4"
+          onSubmit={handleSubmit(handleLoginSubmit)}
+        >
           <div>
             <input
+              className="w-full"
               {...register("email")}
               type="email"
               placeholder="Enter your email address"
@@ -77,6 +83,7 @@ const Signin: FC = () => {
 
           <div>
             <input
+              className="w-full"
               {...register("password")}
               type="password"
               placeholder="Enter your password"
@@ -84,17 +91,26 @@ const Signin: FC = () => {
             />
           </div>
 
-          <button>Login</button>
+          <button className="block w-full border border-black py-2">
+            Login
+          </button>
         </form>
-        <a href="#">Forgot Password ?</a>
 
-        <div className="my-4">-----------------OR------------</div>
+        {/* divider */}
+        <div className="mb-4 mt-6 flex items-center gap-1 pt-1">
+          <div className="h-[1px] w-full bg-black"></div>
+          OR
+          <div className="h-[1px] w-full bg-black"></div>
+        </div>
+        {/* divider */}
 
         <button
           onClick={handleGoogleSignIn}
-          className="mb-4 border border-black text-center"
+          className="mb-4 block w-full border border-black py-2 text-center"
         >
-          SignIn with Google
+          <span className="flex items-center justify-center gap-2">
+            <FcGoogle /> Sign In with Google
+          </span>
         </button>
 
         <p>

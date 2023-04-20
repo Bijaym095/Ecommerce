@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { NavLink } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -19,7 +18,7 @@ interface SlideInterface {
   imgSrc: string;
 }
 
-const Hero: FC = () => {
+const Hero: React.FC = () => {
   const HERO_SLIDES_DETAILS: SlideInterface[] = [
     {
       title: "Spring / Summer Collection 2023",

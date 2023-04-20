@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { clsx } from "clsx";
 
@@ -8,7 +8,7 @@ import { FaBars } from "react-icons/fa";
 
 import Container from "../common/Container";
 
-const Navbar: FC = () => {
+const Navbar: React.FC = () => {
   const [isToggled, setIsToggled] = useState<boolean>(false);
 
   const handleToggleNav = () => {

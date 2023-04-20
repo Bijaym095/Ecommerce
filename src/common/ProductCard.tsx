@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import { AiFillStar } from "react-icons/ai";
@@ -16,13 +16,16 @@ interface ProductCardInterface {
   details: ProductCardDataInterface;
 }
 
-const ProductCard: FC<ProductCardInterface> = ({ details }) => {
+const ProductCard: React.FC<ProductCardInterface> = ({ details }) => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
+  //! Handling Addtocart function in case user is logged in or not
+
   const handleAddProductCard = () => {
     if (user) {
-      console.log(user);
+      navigate("/");
+      console.log("Hello world");
     } else {
       navigate("signin");
     }
@@ -30,14 +33,16 @@ const ProductCard: FC<ProductCardInterface> = ({ details }) => {
 
   const getStars = (num: number) => {
     let stars = [];
+
     for (let i = 0; i < num; i++) {
       stars.push(<AiFillStar key={i} />);
     }
+
     return stars;
   };
 
   return (
-    <article className="mb-6 rounded-lg bg-gray-200 p-6 duration-300 hover:shadow-lg">
+    <article className="mb-6 rounded-lg border border-black p-6 duration-300 hover:shadow-lg">
       <div className="mb-2">
         <picture>
           <img

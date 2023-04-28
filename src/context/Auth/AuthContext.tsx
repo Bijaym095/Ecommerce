@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, createContext } from "react";
+
 import type { User } from "firebase/auth";
 
 interface AuthContextInterface {

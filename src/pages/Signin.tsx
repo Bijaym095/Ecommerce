@@ -66,7 +66,7 @@ const Signin: React.FC = () => {
   return (
     <div className="grid h-screen place-items-center">
       <div className="border border-black px-4 py-2">
-        <h2 className="section-title">Sign In</h2>
+        <h2 className="section-title text-center">Sign In</h2>
         <form
           className="mb-6 space-y-4"
           onSubmit={handleSubmit(handleLoginSubmit)}

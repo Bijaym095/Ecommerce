@@ -19,7 +19,7 @@ interface SlideInterface {
 }
 
 const Hero: React.FC = () => {
-  const HERO_SLIDES_DETAILS: SlideInterface[] = [
+  const HERO_SLIDES: SlideInterface[] = [
     {
       title: "Spring / Summer Collection 2023",
       main_title: "Get up to 30% off New Arrivals",
@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
         pagination={{ clickable: true }}
         autoplay={{ delay: 4000 }}
       >
-        {HERO_SLIDES_DETAILS.map((slide, index) => (
+        {HERO_SLIDES.map((slide, index) => (
           <SwiperSlide key={index}>
             <div
               className="section-spacing bg-cover bg-center bg-no-repeat"

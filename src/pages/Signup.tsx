@@ -37,7 +37,7 @@ const Signup: React.FC = () => {
   return (
     <div className="grid h-screen place-items-center">
       <div className="border border-black px-6 py-4">
-        <h2 className="section-title"> Sign Up</h2>
+        <h2 className="section-title text-center"> Sign Up</h2>
 
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           <div>

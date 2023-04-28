@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { clsx } from "clsx";
 
@@ -10,13 +10,36 @@ import Container from "../common/Container";
 
 const Navbar: React.FC = () => {
   const [isToggled, setIsToggled] = useState<boolean>(false);
+  const [isSticky, setIsSticky] = useState<boolean>(false);
 
   const handleToggleNav = () => {
     setIsToggled((prev) => !prev);
   };
 
+  useEffect(() => {
+    const navbar = document.querySelector("nav") as HTMLElement;
+
+    const handleSticky = () => {
+      const navbarHeight = navbar.clientHeight;
+
+      if (window.scrollY > navbarHeight) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleSticky);
+
+    return () => {
+      window.removeEventListener("scroll", handleSticky);
+    };
+  }, []);
+
   return (
-    <nav className="shadow-lg">
+    <nav
+      className={`shadow-lg ${isSticky ? "sticky top-0 z-50 bg-white" : ""}`}
+    >
       <Container className="flex min-h-[100px] items-center justify-between gap-4">
         <NavLink className="text-lg font-bold" to="/">
           Ecommerce
@@ -24,7 +47,7 @@ const Navbar: React.FC = () => {
 
         <div
           className={clsx(
-            "fixed z-[99] lg:static",
+            "fixed z-[99] lg:static ",
             `${isToggled ? "left-0" : "-left-[250px]"} bottom-0 top-0 `,
             "h-full w-[250px] bg-blue-400 transition-all duration-300 lg:bg-white"
           )}

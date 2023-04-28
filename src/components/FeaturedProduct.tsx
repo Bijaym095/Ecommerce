@@ -1,10 +1,10 @@
 import Container from "../common/Container";
-import ProductCard, { ProductCardDataInterface } from "../common/ProductCard";
+import ProductCard, { ProductCardInterface } from "../common/ProductCard";
 
 import ProductImage1 from "../assets/images/banner-2.jpeg";
 
 const FeaturedProduct: React.FC = () => {
-  const FEATURED_PRODUCT_DATA: ProductCardDataInterface[] = [
+  const FEATURED_PRODUCTS: ProductCardInterface[] = [
     {
       imgSrc: ProductImage1,
       title: "Summer Shirt",
@@ -56,11 +56,11 @@ const FeaturedProduct: React.FC = () => {
 
   return (
     <section className="section-padding">
-      <Container className="">
+      <Container>
         <h2 className="section-title text-center">Featured Products</h2>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURED_PRODUCT_DATA.map((item, index) => (
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+          {FEATURED_PRODUCTS.map((item, index) => (
             <ProductCard key={index} details={item} />
           ))}
         </div>

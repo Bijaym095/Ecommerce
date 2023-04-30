@@ -10,6 +10,7 @@ interface AuthContextInterface {
 const AuthContext = createContext<AuthContextInterface>({
   user: null,
   setUser: () => {},
+
 });
 
 export default AuthContext;

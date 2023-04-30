@@ -4,12 +4,14 @@ import { useNavigate, Link } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 
 import AuthContext from "../context/Auth/AuthContext";
+import CartContext from "../context/Cart/CartContext";
 
 export interface ProductCardInterface {
   imgSrc: string;
   title: string;
   ratings: 1 | 2 | 3 | 4 | 5;
   price: number;
+  quantity?: number;
 }
 
 interface ProductCardPropsInterface {
@@ -18,17 +20,9 @@ interface ProductCardPropsInterface {
 
 const ProductCard: React.FC<ProductCardPropsInterface> = ({ details }) => {
   const navigate = useNavigate();
+
   const { user } = useContext(AuthContext);
-
-  //! Handling Addtocart function in case user is logged in or not
-
-  const handleAddProductCard = (details: ProductCardInterface): void => {
-    if (user !== null) {
-      console.log("added product detail", details);
-    } else {
-      navigate("signin");
-    }
-  };
+  const { cartItems, setCartItems } = useContext(CartContext);
 
   const getStarsByNumber = (count: number) => {
     let stars = [];
@@ -38,6 +32,42 @@ const ProductCard: React.FC<ProductCardPropsInterface> = ({ details }) => {
     }
 
     return stars;
+  };
+
+  //* Handling Addtocart function in case user is logged in or not
+  const handleAddProductCard = (newItem: ProductCardInterface): void => {
+    if (user) {
+      //  Checking if the cartItems exist or not
+      const existingItems = cartItems.find((item) => {
+        return (
+          item.imgSrc === newItem.imgSrc &&
+          item.title === newItem.title &&
+          item.ratings === newItem.ratings &&
+          item.price === newItem.price
+        );
+      });
+
+      if (existingItems) {
+        // If the items already exist, increase its quantity
+        setCartItems((prevItems) =>
+          prevItems.map((item) =>
+            item === existingItems
+              ? { ...item, quantity: (item.quantity ?? 0) + 1 } // if item.quantity is "undefined", then quantity of the item is set to be 0
+              : item
+          )
+        );
+      } else {
+        // If the item doesn't exist then add it to the cart with quantity of 1
+        setCartItems((prevItems) => [
+          ...prevItems,
+          { ...newItem, quantity: 1 },
+        ]);
+      }
+    } else {
+      // Navigating to the signin page if the user is not logged in
+
+      navigate("signin");
+    }
   };
 
   return (

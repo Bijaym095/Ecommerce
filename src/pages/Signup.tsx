@@ -1,8 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import { useEffect } from "react";
 
 type SignUpFormValues = {
   email: string;
@@ -34,14 +35,19 @@ const Signup: React.FC = () => {
     navigate("/signin");
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="grid h-screen place-items-center">
       <div className="border border-black px-6 py-4">
         <h2 className="section-title text-center"> Sign Up</h2>
 
-        <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+        <form className="mb-8 space-y-4" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <input
+              className="w-full"
               {...register("email")}
               type="email"
               name="email"
@@ -52,6 +58,7 @@ const Signup: React.FC = () => {
 
           <div>
             <input
+              className="w-full"
               {...register("password")}
               type="password"
               name="password"
@@ -62,6 +69,7 @@ const Signup: React.FC = () => {
 
           <div>
             <input
+              className="w-full"
               {...register("confirmPassword")}
               type="password"
               name="confirmPassword"
@@ -77,6 +85,13 @@ const Signup: React.FC = () => {
             Sign Up
           </button>
         </form>
+
+        <p>
+          Already have an account ?{" "}
+          <NavLink className="underline" to="/signin">
+            SignIn
+          </NavLink>
+        </p>
       </div>
     </div>
   );

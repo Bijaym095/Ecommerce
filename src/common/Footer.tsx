@@ -8,8 +8,6 @@ import Cards from "../assets/images/cards.png";
 import Container from "../common/Container";
 
 const Footer: FC = () => {
-  // todo:  Style google play button and appstore button
-
   const footerTitleStyles = "font-bold text-[1.2rem] capitalize mb-4";
 
   return (

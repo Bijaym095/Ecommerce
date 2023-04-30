@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -16,14 +16,15 @@ import { auth } from "../firebase";
 
 import AuthContext from "../context/Auth/AuthContext";
 
-interface LoginValues {
+type LoginValues = {
   email: string;
   password: string;
-}
+};
 
 const Signin: React.FC = () => {
   const { setUser } = useContext(AuthContext);
   const { register, handleSubmit, reset } = useForm<LoginValues>();
+  const navigate = useNavigate();
 
   const handleLoginSubmit: SubmitHandler<LoginValues> = async (data) => {
     try {
@@ -32,7 +33,8 @@ const Signin: React.FC = () => {
         data.email,
         data.password
       );
-      console.log("signed in with email and password");
+
+      navigate("/");
     } catch (err) {
       console.warn(err);
     } finally {
@@ -45,13 +47,17 @@ const Signin: React.FC = () => {
 
     try {
       const result = await signInWithPopup(auth, provider);
-      console.log("Created a user with GooglePopUp");
+
+      navigate("/");
     } catch (err) {
       console.warn("Error while signingup with google", err);
     }
   };
 
   useEffect(() => {
+    // scrolled to top when the component mounts
+    window.scrollTo(0, 0);
+
     const handleAuthState = () => {
       onAuthStateChanged(auth, (currentUser) => {
         if (currentUser) {
@@ -59,7 +65,6 @@ const Signin: React.FC = () => {
         }
       });
     };
-
     handleAuthState();
   }, []);
 

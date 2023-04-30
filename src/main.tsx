@@ -6,11 +6,14 @@ import App from "./App";
 import "./assets/styles/index.css";
 
 import AuthState from "./context/Auth/AuthState";
+import CartState from "./context/Cart/CartState";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
+  <CartState>
     <AuthState>
-      <App />
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
     </AuthState>
-  </React.StrictMode>
+  </CartState>
 );

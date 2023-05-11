@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 import Cards from "../assets/images/cards.png";
+import PlayStore from "../assets/images/playstore.png";
+import AppStore from "../assets/images/appstore.png";
 
 import Container from "../common/Container";
 
@@ -118,30 +120,36 @@ const Footer: FC = () => {
           <p className="mb-4">From App Store or Google play</p>
 
           <div className="mb-4 space-x-2">
-            <NavLink
-              className="border border-white px-4 py-2"
-              type="button"
-              role="button"
-              target="_blank"
-              to="/"
-            >
-              App store
+            <NavLink type="button" role="button" target="_blank" to="/">
+              <picture>
+                <img
+                  className="w-[100px] object-cover"
+                  src={AppStore}
+                  alt="Download on the appstore"
+                />
+              </picture>
             </NavLink>
 
-            <NavLink
-              className="border border-white px-4 py-2"
-              type="button"
-              role="button"
-              target="_blank"
-              to="/"
-            >
-              PlayStore
+            <NavLink type="button" role="button" target="_blank" to="/">
+              <picture>
+                <img
+                  className="w-[100px] object-cover"
+                  src={PlayStore}
+                  alt="Get it on playstore"
+                />
+              </picture>
             </NavLink>
           </div>
 
           <p className="mb-4">Secured Payment Gateways</p>
 
-          <img src={`${Cards}`} alt="cards-alt" />
+          <picture>
+            <img
+              className="h-[36px] object-cover"
+              src={Cards}
+              alt="cards-alt"
+            />
+          </picture>
         </div>
         {/* App-details */}
       </Container>

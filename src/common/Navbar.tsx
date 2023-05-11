@@ -89,7 +89,10 @@ const Navbar: React.FC = () => {
             <BsFillPersonFill />
           </button>
 
-          <button className="relative rounded-[50%] bg-gray-300 p-2">
+          <NavLink
+            to="/cart"
+            className="relative inline-block rounded-[50%] bg-gray-300 p-2 align-middle"
+          >
             <BsCart2 />
 
             {cartItems.length > 0 && (
@@ -99,7 +102,7 @@ const Navbar: React.FC = () => {
                 </span>
               </div>
             )}
-          </button>
+          </NavLink>
         </div>
 
         {/* btn-container */}

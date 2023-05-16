@@ -96,7 +96,7 @@ const Signin: React.FC = () => {
             />
           </div>
 
-          <button className="block w-full border border-black py-2">
+          <button className="block w-full bg-blue-500 py-2 font-medium text-white hover:bg-blue-600">
             Login
           </button>
         </form>

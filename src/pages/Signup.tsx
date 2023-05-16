@@ -79,7 +79,7 @@ const Signup: React.FC = () => {
           </div>
 
           <button
-            className="mt-6 block w-full border border-black py-2 "
+            className="mt-6 block w-full bg-blue-500 py-2 text-white hover:bg-blue-600"
             type="submit"
           >
             Sign Up

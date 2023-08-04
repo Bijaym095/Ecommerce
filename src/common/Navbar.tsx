@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { AiOutlineSearch } from "react-icons/ai";
@@ -7,7 +7,7 @@ import { FaBars } from "react-icons/fa";
 
 import Container from "../common/Container";
 
-import CartContext from "../context/Cart/CartContext";
+import useCartContext from "../hooks/useCartContext";
 
 import { combineClasses } from "../utils";
 
@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
   const [isToggled, setIsToggled] = useState<boolean>(false);
   const [isSticky, setIsSticky] = useState<boolean>(false);
 
-  const { cartItems } = useContext(CartContext);
+  const { cartItems } = useCartContext();
 
   const handleToggleNav = () => {
     setIsToggled((prev) => !prev);

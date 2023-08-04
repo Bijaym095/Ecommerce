@@ -5,10 +5,10 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import Container from "../common/Container";
 import { ProductCardInterface } from "../common/ProductCard";
 
-import CartContext from "../context/Cart/CartContext";
+import useCartContext from "../hooks/useCartContext";
 
 const Cart = () => {
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const { cartItems, setCartItems } = useCartContext();
 
   const handleTotalAmout = (): number => {
     const total = cartItems.reduce((sum, item) => {

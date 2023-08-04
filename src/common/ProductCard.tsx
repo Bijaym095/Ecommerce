@@ -1,10 +1,9 @@
-import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import { AiFillStar } from "react-icons/ai";
 
-import AuthContext from "../context/Auth/AuthContext";
-import CartContext from "../context/Cart/CartContext";
+import useAuthContext from "../hooks/useAuthContext";
+import useCartContext from "../hooks/useCartContext";
 
 export interface ProductCardInterface {
   imgSrc: string;
@@ -21,8 +20,8 @@ interface ProductCardPropsInterface {
 const ProductCard: React.FC<ProductCardPropsInterface> = ({ details }) => {
   const navigate = useNavigate();
 
-  const { user } = useContext(AuthContext);
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const { user } = useAuthContext();
+  const { cartItems, setCartItems } = useCartContext();
 
   const getStarsByNumber = (count: number) => {
     let stars = [];

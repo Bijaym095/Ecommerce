@@ -14,7 +14,7 @@ import {
 
 import { auth } from "../firebase";
 
-import AuthContext from "../context/Auth/AuthContext";
+import useAuthContext from "../hooks/useAuthContext";
 
 type LoginValues = {
   email: string;
@@ -22,7 +22,7 @@ type LoginValues = {
 };
 
 const Signin: React.FC = () => {
-  const { setUser } = useContext(AuthContext);
+  const { setUser } = useAuthContext();
   const { register, handleSubmit, reset } = useForm<LoginValues>();
   const navigate = useNavigate();
 

@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import Container from "../common/Container";
@@ -7,7 +6,7 @@ interface NewsletterFormValues {
   email: string;
 }
 
-const NewsLetter: FC = () => {
+const NewsLetter: React.FC = () => {
   const { register, handleSubmit, reset } = useForm<NewsletterFormValues>();
 
   const handleNewsletter: SubmitHandler<NewsletterFormValues> = (data) => {

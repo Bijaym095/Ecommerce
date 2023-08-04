@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { NavLink } from "react-router-dom";
 
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
@@ -9,7 +8,7 @@ import AppStore from "../assets/images/appstore.png";
 
 import Container from "../common/Container";
 
-const Footer: FC = () => {
+const Footer: React.FC = () => {
   const footerTitleStyles = "font-bold text-[1.2rem] capitalize mb-4";
 
   return (

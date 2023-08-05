@@ -1,10 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { FcGoogle } from "react-icons/fc";
 
+import { auth } from "../firebase";
 import {
   GoogleAuthProvider,
   onAuthStateChanged,
@@ -12,14 +13,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 
-import { auth } from "../firebase";
-
 import useAuthContext from "../hooks/useAuthContext";
-
-type LoginValues = {
-  email: string;
-  password: string;
-};
 
 const Signin: React.FC = () => {
   const { setUser } = useAuthContext();
@@ -130,3 +124,8 @@ const Signin: React.FC = () => {
 };
 
 export default Signin;
+
+type LoginValues = {
+  email: string;
+  password: string;
+};

@@ -1,8 +1,9 @@
+import { useEffect } from "react";
+
 import Hero from "../components/Hero";
 import Banners from "../components/Banners";
 import FeaturedProduct from "../components/FeaturedProduct";
 import NewsLetter from "../components/NewsLetter";
-import { useEffect } from "react";
 
 const Home = () => {
   useEffect(() => {

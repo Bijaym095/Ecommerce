@@ -1,15 +1,9 @@
+import { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
-import { useEffect } from "react";
-
-type SignUpFormValues = {
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Signup: React.FC = () => {
   const { register, handleSubmit, reset } = useForm<SignUpFormValues>();
@@ -98,3 +92,9 @@ const Signup: React.FC = () => {
 };
 
 export default Signup;
+
+type SignUpFormValues = {
+  email: string;
+  password: string;
+  confirmPassword: string;
+};

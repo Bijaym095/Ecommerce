@@ -1,14 +1,14 @@
 import { Dispatch, SetStateAction, createContext } from "react";
-import { ProductCardInterface } from "../../common/ProductCard";
+import { ProductCardProps } from "../../common/ProductCard";
 
-interface CartContextInterface {
-  cartItems: ProductCardInterface[];
-  setCartItems: Dispatch<SetStateAction<ProductCardInterface[]>>;
-}
-
-const CartContext = createContext<CartContextInterface>({
+const CartContext = createContext<CartContext>({
   cartItems: [],
   setCartItems: () => {},
 });
 
 export default CartContext;
+
+type CartContext = {
+  cartItems: ProductCardProps[];
+  setCartItems: Dispatch<SetStateAction<ProductCardProps[]>>;
+};

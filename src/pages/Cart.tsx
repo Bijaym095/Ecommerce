@@ -1,9 +1,7 @@
-import { useContext } from "react";
-
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 import Container from "../common/Container";
-import { ProductCardInterface } from "../common/ProductCard";
+import { ProductCardProps } from "../common/ProductCard";
 
 import useCartContext from "../hooks/useCartContext";
 
@@ -19,7 +17,7 @@ const Cart = () => {
     return total;
   };
 
-  const handleQuantityIncrement = (newItem: ProductCardInterface): void => {
+  const handleQuantityIncrement = (newItem: ProductCardProps): void => {
     const updatedCartItems = cartItems.map((item) => {
       if (
         item.imgSrc === newItem.imgSrc &&
@@ -36,9 +34,7 @@ const Cart = () => {
     setCartItems(updatedCartItems);
   };
 
-  const handleQuantityDecrement = (
-    itemToDecrement: ProductCardInterface
-  ): void => {
+  const handleQuantityDecrement = (itemToDecrement: ProductCardProps): void => {
     const updatedCartItems = cartItems
       .map((item) => {
         if (

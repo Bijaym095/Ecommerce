@@ -1,14 +1,11 @@
 import { useState } from "react";
+
 import CartContext from "./CartContext";
 
-import { ProductCardInterface } from "../../common/ProductCard";
-
-interface CartStateProps {
-  children: React.ReactNode;
-}
+import { ProductCardProps } from "../../common/ProductCard";
 
 const CartState: React.FC<CartStateProps> = ({ children }) => {
-  const [cartItems, setCartItems] = useState<ProductCardInterface[]>([]);
+  const [cartItems, setCartItems] = useState<ProductCardProps[]>([]);
 
   return (
     <CartContext.Provider value={{ cartItems, setCartItems }}>
@@ -18,3 +15,7 @@ const CartState: React.FC<CartStateProps> = ({ children }) => {
 };
 
 export default CartState;
+
+type CartStateProps = {
+  children: React.ReactNode;
+};

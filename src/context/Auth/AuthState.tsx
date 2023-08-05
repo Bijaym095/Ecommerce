@@ -4,11 +4,7 @@ import { User } from "firebase/auth";
 
 import AuthContext from "./AuthContext";
 
-interface AuthStateInterface {
-  children: ReactNode | string;
-}
-
-const AuthState = ({ children }: AuthStateInterface) => {
+const AuthState = ({ children }: AuthState) => {
   const [user, setUser] = useState<User | null>(null);
 
   return (
@@ -19,3 +15,7 @@ const AuthState = ({ children }: AuthStateInterface) => {
 };
 
 export default AuthState;
+
+type AuthState = {
+  children: ReactNode | string;
+};

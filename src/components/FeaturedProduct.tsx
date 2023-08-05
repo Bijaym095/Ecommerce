@@ -1,10 +1,10 @@
 import Container from "../common/Container";
-import ProductCard, { ProductCardInterface } from "../common/ProductCard";
+import ProductCard, { ProductCardProps } from "../common/ProductCard";
 
 import ProductImage1 from "../assets/images/banner-2.jpeg";
 
 const FeaturedProduct: React.FC = () => {
-  const FEATURED_PRODUCTS: ProductCardInterface[] = [
+  const FEATURED_PRODUCTS: ProductCardProps[] = [
     {
       imgSrc: ProductImage1,
       title: "Summer Shirt",
@@ -61,7 +61,7 @@ const FeaturedProduct: React.FC = () => {
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
           {FEATURED_PRODUCTS.map((item, index) => (
-            <ProductCard key={index} details={item} />
+            <ProductCard key={index} {...item} />
           ))}
         </div>
       </Container>

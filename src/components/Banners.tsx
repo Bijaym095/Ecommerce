@@ -8,15 +8,8 @@ import BannerImage3 from "../assets/images/banner-3.jpg";
 import BannerImage4 from "../assets/images/banner-4.jpeg";
 import BannerImage5 from "../assets/images/banner-5.jpeg";
 
-interface BannerContentInterface {
-  thumbnailImageSrc: string;
-  containerStyles: string;
-  category: string;
-  linkTo: string;
-}
-
 const Banners: React.FC = () => {
-  const BANNER_CONTENTS: BannerContentInterface[] = [
+  const BANNER_CONTENTS: BannerContent[] = [
     {
       thumbnailImageSrc: BannerImage1,
       containerStyles: "w-full shrink-0 px-4 md:w-6/12",
@@ -83,3 +76,10 @@ const Banners: React.FC = () => {
 };
 
 export default Banners;
+
+type BannerContent = {
+  thumbnailImageSrc: string;
+  containerStyles: string;
+  category: string;
+  linkTo: string;
+};

@@ -12,14 +12,8 @@ import HeroBg2 from "../assets/images/hero-bg2.jpg";
 
 import Container from "../common/Container";
 
-interface SlideInterface {
-  title: string;
-  main_title: string;
-  imgSrc: string;
-}
-
 const Hero: React.FC = () => {
-  const HERO_SLIDES: SlideInterface[] = [
+  const HERO_SLIDES: HeroSlide[] = [
     {
       title: "Spring / Summer Collection 2023",
       main_title: "Get up to 30% off New Arrivals",
@@ -79,3 +73,9 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+
+type HeroSlide = {
+  title: string;
+  main_title: string;
+  imgSrc: string;
+};

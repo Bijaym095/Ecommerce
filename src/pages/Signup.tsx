@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { auth } from "../firebase";
+import { auth } from "../config/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Signup: React.FC = () => {

@@ -5,18 +5,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import { FcGoogle } from "react-icons/fc";
 
-import { auth } from "../firebase";
+import { auth } from "../config/firebase";
 import {
   GoogleAuthProvider,
-  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
 
-import useAuthContext from "../hooks/useAuthContext";
-
 const Signin: React.FC = () => {
-  const { setUser } = useAuthContext();
   const { register, handleSubmit, reset } = useForm<LoginValues>();
   const navigate = useNavigate();
 
@@ -51,15 +47,6 @@ const Signin: React.FC = () => {
   useEffect(() => {
     // scrolled to top when the component mounts
     window.scrollTo(0, 0);
-
-    const handleAuthState = () => {
-      onAuthStateChanged(auth, (currentUser) => {
-        if (currentUser) {
-          setUser(currentUser);
-        }
-      });
-    };
-    handleAuthState();
   }, []);
 
   return (

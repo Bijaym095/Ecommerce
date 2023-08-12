@@ -1,15 +1,14 @@
-import { Link } from "react-router-dom";
+import BannerImage1 from "../../assets/images/banner-1.jpg";
+import BannerImage2 from "../../assets/images/banner-2.jpeg";
+import BannerImage3 from "../../assets/images/banner-3.jpg";
+import BannerImage4 from "../../assets/images/banner-4.jpeg";
+import BannerImage5 from "../../assets/images/banner-5.jpeg";
+import Container from "../../common/Container";
 
-import Container from "../common/Container";
-
-import BannerImage1 from "../assets/images/banner-1.jpg";
-import BannerImage2 from "../assets/images/banner-2.jpeg";
-import BannerImage3 from "../assets/images/banner-3.jpg";
-import BannerImage4 from "../assets/images/banner-4.jpeg";
-import BannerImage5 from "../assets/images/banner-5.jpeg";
+import { BannerContent } from "./BannerContent";
 
 const Banners: React.FC = () => {
-  const BANNER_CONTENTS: BannerContent[] = [
+  const BANNERS: Banner[] = [
     {
       thumbnailImageSrc: BannerImage1,
       containerStyles: "w-full shrink-0 px-4 md:w-6/12",
@@ -48,28 +47,32 @@ const Banners: React.FC = () => {
   return (
     <section className="section-padding">
       <Container>
-        {/* wrapper */}
+        {/* ========= wrapper ========== */}
+
         <div className="-mx-4 flex flex-wrap">
-          {BANNER_CONTENTS.map((content, index) => (
+          {BANNERS.map((content, index) => (
             <article className={`${content.containerStyles}`} key={index}>
               <div className={`${bannerContainerStyle}`}>
+                {/* ============ thumbnail ======== */}
+
                 <picture>
                   <img src={content.thumbnailImageSrc} alt="" />
                 </picture>
 
+                {/* ============ thumbnail ======== */}
+
                 <div className="absolute left-1/2 top-1/2 z-10 -translate-x-2/4 -translate-y-2/4">
-                  <Link
-                    className="bg-white bg-opacity-80 px-4 py-2 font-medium uppercase hover:text-blue-700"
-                    to={`${content.linkTo}`}
-                  >
-                    {content.category}
-                  </Link>
+                  <BannerContent
+                    category={content.category}
+                    linkTo={content.linkTo}
+                  />
                 </div>
               </div>
             </article>
           ))}
         </div>
-        {/* wrapper */}
+
+        {/* ========== wrapper ========== */}
       </Container>
     </section>
   );
@@ -77,7 +80,7 @@ const Banners: React.FC = () => {
 
 export default Banners;
 
-type BannerContent = {
+type Banner = {
   thumbnailImageSrc: string;
   containerStyles: string;
   category: string;

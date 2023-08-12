@@ -1,15 +1,14 @@
-import { Dispatch, SetStateAction, createContext } from "react";
+import { createContext } from "react";
 
-import type { User } from "firebase/auth";
+import type { User, UserCredential } from "firebase/auth";
 
-const AuthContext = createContext<AuthContext>({
-  user: null,
-  setUser: () => {},
-});
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export default AuthContext;
 
-type AuthContext = {
-  user: User | null;
-  setUser: Dispatch<SetStateAction<User | null>>;
+type AuthContextType = {
+  currentUser: User | null;
+  signup: (email: string, password: string) => Promise<UserCredential>;
+  signin: (email: string, password: string) => Promise<UserCredential>;
+  logout: () => Promise<void>;
 };

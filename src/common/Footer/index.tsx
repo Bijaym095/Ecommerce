@@ -1,38 +1,40 @@
 import { NavLink } from "react-router-dom";
-
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
-import Cards from "../assets/images/cards.png";
-import PlayStore from "../assets/images/playstore.png";
-import AppStore from "../assets/images/appstore.png";
-
-import Container from "../common/Container";
+import Cards from "../../assets/images/cards.png";
+import PlayStore from "../../assets/images/playstore.png";
+import AppStore from "../../assets/images/appstore.png";
+import Container from "../../common/Container";
 
 const Footer: React.FC = () => {
   const footerTitleStyles = "font-bold text-[1.2rem] capitalize mb-4";
 
   return (
-    <footer className="bg-black text-white">
-      {/* footer-links */}
+    <footer className="min-h-[350px] bg-black text-white">
+      {/* ============ footer-links ======== */}
       <Container className="grid gap-4 py-8 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <NavLink className="mb-4 inline-block text-lg font-bold" to="/">
             Ecommerce
           </NavLink>
 
-          {/* contact */}
+          {/* ============= contact ========= */}
           <h5 className={`${footerTitleStyles}`}>Contact</h5>
+
           <ul className="mb-4 space-y-2">
             <li>Kathmandu , Nepal</li>
+
             <li>
               <a href="tel:+977 9800 0000 00">+977 9800 0000 00</a>
             </li>
+
             <li>
               <a href="mailto:abc@info.com">abc@info.com</a>
             </li>
           </ul>
+          {/* ============= contact ========= */}
 
-          {/* social-links */}
+          {/*============= social-links ============ */}
           <h5 className={`${footerTitleStyles}`}>Follow Us</h5>
 
           <ul className="mb-4 flex space-x-2">
@@ -41,35 +43,35 @@ const Footer: React.FC = () => {
                 <FaFacebook />
               </NavLink>
             </li>
+
             <li>
               <NavLink target="_blank" to="/">
                 <FaTwitter />
               </NavLink>
             </li>
+
             <li>
               <NavLink target="_blank" to="/">
                 <FaInstagram />
               </NavLink>
             </li>
+
             <li>
               <NavLink target="_blank" to="/">
                 <FaYoutube />
               </NavLink>
             </li>
           </ul>
+          {/*============== social-links ============*/}
         </div>
 
-        {/* About */}
+        {/* =============== About ================= */}
         <div>
           <h5 className={`${footerTitleStyles}`}>About</h5>
 
           <ul className="space-y-2">
             <li>
               <NavLink to="/">About Us</NavLink>
-            </li>
-
-            <li>
-              <NavLink to="/">Delivery Information</NavLink>
             </li>
 
             <li>
@@ -85,34 +87,29 @@ const Footer: React.FC = () => {
             </li>
           </ul>
         </div>
+        {/* =============== About ================= */}
 
-        {/* About */}
-
-        {/* Accounts */}
+        {/* =============== Accounts ============== */}
         <div>
           <h5 className={`${footerTitleStyles}`}>My Account</h5>
 
           <ul className="space-y-2">
             <li>
-              <NavLink to="/">SignIn</NavLink>
+              <NavLink to="/signin">SignIn</NavLink>
             </li>
+
             <li>
-              <NavLink to="/">View Cart</NavLink>
+              <NavLink to="/cart">View Cart</NavLink>
             </li>
-            <li>
-              <NavLink to="/">My Wishlist</NavLink>
-            </li>
-            <li>
-              <NavLink to="/">Track My Order</NavLink>
-            </li>
+
             <li>
               <NavLink to="/">Help</NavLink>
             </li>
           </ul>
         </div>
-        {/* Accounts */}
+        {/* =============== Accounts ============== */}
 
-        {/* App-details */}
+        {/* =============== App-details =========== */}
         <div>
           <h5 className={`${footerTitleStyles}`}>Install App</h5>
 
@@ -150,15 +147,17 @@ const Footer: React.FC = () => {
             />
           </picture>
         </div>
-        {/* App-details */}
+        {/* =============== App-details =========== */}
       </Container>
-      {/* footer-links */}
+      {/* ================= footer-links ========== */}
 
+      {/* ======== copyright ======= */}
       <Container className="flex items-center justify-center py-5">
         <p className="text-center">
           Copyright &copy; 2023 - All rights reserved.
         </p>
       </Container>
+      {/* ======== copyright ======= */}
     </footer>
   );
 };

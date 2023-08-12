@@ -12,7 +12,12 @@ export default {
       lg: "1024px",
       xl: "1280px",
     },
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#14213D",
+        secondary: "#FCA311",
+      },
+    },
   },
   plugins: [require("@tailwindcss/forms")],
 };

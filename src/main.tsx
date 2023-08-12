@@ -9,11 +9,11 @@ import AuthState from "./context/Auth/AuthState";
 import CartState from "./context/Cart/CartState";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <CartState>
-    <AuthState>
+  <AuthState>
+    <CartState>
       <React.StrictMode>
         <App />
       </React.StrictMode>
-    </AuthState>
-  </CartState>
+    </CartState>
+  </AuthState>
 );

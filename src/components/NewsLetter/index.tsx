@@ -1,13 +1,11 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import Container from "../common/Container";
+import Container from "../../common/Container";
 
 const NewsLetter: React.FC = () => {
   const { register, handleSubmit, reset } = useForm<NewsletterFormValues>();
 
   const handleNewsletter: SubmitHandler<NewsletterFormValues> = (data) => {
-    console.log(data);
-
     reset();
   };
 
@@ -31,7 +29,7 @@ const NewsLetter: React.FC = () => {
             required
           />
 
-          <button className="ml-2 rounded-lg bg-red-400 px-4 py-2 font-medium text-white duration-300 hover:bg-red-500 active:bg-red-700 ">
+          <button className="ml-2 rounded-lg bg-primary px-4 py-2 font-medium text-white duration-300">
             Subscribe
           </button>
         </form>

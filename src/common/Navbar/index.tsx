@@ -39,18 +39,20 @@ const Navbar: React.FC = () => {
       className={`shadow-lg  ${isSticky ? "sticky top-0 z-50 bg-white" : ""}`}
     >
       <Container className="flex min-h-[100px] items-center justify-between gap-4">
-        <NavLink className="text-lg font-bold" to="/">
-          Ecommerce
-        </NavLink>
+        <div className="flex items-center gap-6">
+          <NavLink className="text-lg font-bold" to="/">
+            Ecommerce
+          </NavLink>
 
-        <LinksContainer
-          isToggled={isToggled}
-          links={[
-            { title: "home", linkTo: "/" },
-            { title: "shop", linkTo: "/" },
-            { title: "contact", linkTo: "/" },
-          ]}
-        />
+          <LinksContainer
+            isToggled={isToggled}
+            links={[
+              { title: "home", linkTo: "/" },
+              { title: "shop", linkTo: "/" },
+              { title: "contact", linkTo: "/" },
+            ]}
+          />
+        </div>
 
         <div className="flex gap-4">
           <button className=" lg:hidden" onClick={handleToggleNav}>

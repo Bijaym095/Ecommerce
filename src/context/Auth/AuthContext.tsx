@@ -1,5 +1,4 @@
 import { createContext } from "react";
-
 import type { User, UserCredential } from "firebase/auth";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);

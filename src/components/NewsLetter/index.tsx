@@ -22,14 +22,14 @@ const NewsLetter: React.FC = () => {
 
         <form onSubmit={handleSubmit(handleNewsletter)}>
           <input
-            className="rounded-lg"
+            className="form-input"
             {...register("email")}
             type="email"
             placeholder="Get upto date with our newsletter"
             required
           />
 
-          <button className="ml-2 rounded-lg bg-primary px-4 py-2 font-medium text-white duration-300">
+          <button className="ml-2 bg-primary-500 px-4 py-2 font-medium text-white duration-300">
             Subscribe
           </button>
         </form>

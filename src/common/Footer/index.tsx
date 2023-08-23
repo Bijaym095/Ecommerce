@@ -19,22 +19,27 @@ const Footer: React.FC = () => {
           </NavLink>
 
           {/* ============= contact ========= */}
-          <h5 className={`${footerTitleStyles}`}>Contact</h5>
+          <div>
+            <h5 className={`${footerTitleStyles}`}>Contact</h5>
 
-          <ul className="mb-4 space-y-2">
-            <li>Kathmandu , Nepal</li>
+            <ul className="mb-4 space-y-2">
+              <li>Kathmandu , Nepal</li>
 
-            <li>
-              <a href="tel:+977 9800 0000 00">+977 9800 0000 00</a>
-            </li>
+              <li>
+                <a href="tel:+977 9800 0000 00">+977 9800 0000 00</a>
+              </li>
 
-            <li>
-              <a href="mailto:abc@info.com">abc@info.com</a>
-            </li>
-          </ul>
+              <li>
+                <a href="mailto:abc@info.com">abc@info.com</a>
+              </li>
+            </ul>
+          </div>
           {/* ============= contact ========= */}
+        </div>
 
-          {/*============= social-links ============ */}
+        {/* =============== social-links ================= */}
+
+        <div>
           <h5 className={`${footerTitleStyles}`}>Follow Us</h5>
 
           <ul className="mb-4 flex space-x-2">
@@ -62,32 +67,8 @@ const Footer: React.FC = () => {
               </NavLink>
             </li>
           </ul>
-          {/*============== social-links ============*/}
         </div>
-
-        {/* =============== About ================= */}
-        <div>
-          <h5 className={`${footerTitleStyles}`}>About</h5>
-
-          <ul className="space-y-2">
-            <li>
-              <NavLink to="/">About Us</NavLink>
-            </li>
-
-            <li>
-              <NavLink to="/">Privacy Policy</NavLink>
-            </li>
-
-            <li>
-              <NavLink to="/">Terms and conditions</NavLink>
-            </li>
-
-            <li>
-              <NavLink to="/">Contact Us</NavLink>
-            </li>
-          </ul>
-        </div>
-        {/* =============== About ================= */}
+        {/* =============== social-links ================= */}
 
         {/* =============== Accounts ============== */}
         <div>

@@ -46,21 +46,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
     }
   };
 
-  // TODO Beautify the product cart
-
   return (
-    <div
-      key={id}
-      className="mb-6 rounded-lg border border-gray-400 p-6 duration-300 hover:shadow-lg"
-    >
-      <header className="mb-2">
+    <div key={id} className="mb-6 border border-primary-500 p-4">
+      <header>
         <picture>
           <img className="h-44 w-full object-cover" src={imgSrc} alt="" />
         </picture>
       </header>
 
-      <main>
-        <h4 className="font-bold hover:text-secondary">
+      <main className="p-2">
+        <h4 className="hover:text-secondary font-bold">
           <Link className="text-[1.2rem]" to="/">
             {title}
           </Link>
@@ -71,14 +66,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <p className="mb-2 flex space-x-1 text-yellow-400">
           {getStarsByNumber(ratings)}
         </p>
+      </main>
 
+      <footer>
         <button
-          className="block w-full bg-primary py-2 text-center font-medium text-white"
+          className="block w-full bg-primary-400 py-2 text-center font-medium text-white transition-colors duration-300 hover:bg-primary-500"
           onClick={() => handleAddProductCard(productDetails)}
         >
           Add to Cart
         </button>
-      </main>
+      </footer>
     </div>
   );
 };

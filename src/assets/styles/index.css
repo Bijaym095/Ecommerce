@@ -6,6 +6,10 @@
   body {
     @apply text-base leading-[1.5];
   }
+
+  label {
+    @apply mb-2 inline-block;
+  }
 }
 
 @layer components {
@@ -20,4 +24,10 @@
   .section-title {
     @apply mb-8 text-[1.728rem] font-bold;
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }

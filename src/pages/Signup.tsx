@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -6,6 +6,7 @@ import useAuthContext from "../hooks/useAuthContext";
 import Container from "../common/Container";
 
 const Signup: React.FC = () => {
+  const [error, setError] = useState<string | null>(null);
   const { register, handleSubmit, reset } = useForm<SignUpFormValues>();
   const navigate = useNavigate();
 
@@ -14,17 +15,17 @@ const Signup: React.FC = () => {
   const onSubmit: SubmitHandler<SignUpFormValues> = async (data) => {
     if (data.password === data.confirmPassword) {
       try {
+        setError(null);
         const result = await signup(data.email, data.password);
-        console.log("Successfully created user");
+        navigate("/");
       } catch (err) {
-        console.log("Error while signingup", err);
+        console.error(err);
       }
     } else {
-      console.log("Passwords don't match! Try again");
+      setError("Passswords don't match! Try again.");
     }
 
     reset();
-    navigate("/signin");
   };
 
   useEffect(() => {
@@ -34,26 +35,30 @@ const Signup: React.FC = () => {
   return (
     <section className="section-padding">
       <Container className="grid place-items-center">
-        <div className="border border-black px-6 py-4">
+        <div className="border border-black p-4 md:w-[400px]">
           <h2 className="section-title text-center"> Sign Up</h2>
 
           <form className="mb-8 space-y-4" onSubmit={handleSubmit(onSubmit)}>
             <div>
+              <label htmlFor="email">Email</label>
               <input
-                className="w-full"
+                className="form-input w-full"
                 {...register("email")}
                 type="email"
                 name="email"
+                id="email"
                 placeholder="Enter your email address"
                 required
               />
             </div>
 
             <div>
+              <label htmlFor="password">Password</label>
               <input
-                className="w-full"
+                className="form-input w-full"
                 {...register("password")}
                 type="password"
+                id="password"
                 name="password"
                 placeholder="Enter your password"
                 required
@@ -61,28 +66,34 @@ const Signup: React.FC = () => {
             </div>
 
             <div>
+              <label htmlFor="confirmPassword">Confirm Password</label>
               <input
-                className="w-full"
+                className="form-input w-full"
                 {...register("confirmPassword")}
                 type="password"
+                id="confirmPassword"
                 name="confirmPassword"
                 placeholder="Re-enter your password"
                 required
               />
             </div>
 
+            {error && (
+              <p className="bg-red-400 py-4 text-center text-white">{error}</p>
+            )}
+
             <button
-              className="mt-6 block w-full bg-primary py-2 text-white"
+              className="mt-6 block w-full bg-primary-500 py-2 font-medium text-white"
               type="submit"
             >
-              Sign Up
+              Create an account
             </button>
           </form>
 
-          <p>
-            Already have an account ?{" "}
-            <NavLink className="underline" to="/signin">
-              SignIn
+          <p className="text-center">
+            Already have an account ?
+            <NavLink className="pl-2 underline" to="/signin">
+              Sign In
             </NavLink>
           </p>
         </div>

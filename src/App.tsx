@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import Root from "./routes/Root";
+import PrivateRoute from "./routes/PrivateRoute";
 
 import Home from "./pages/Home";
 import Signin from "./pages/Signin";
@@ -18,7 +19,9 @@ const router = BrowserRouter(
       <Route path="/" element={<Home />} />
       <Route path="/signin" element={<Signin />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/cart" element={<Cart />} />
+      <Route element={<PrivateRoute />}>
+        <Route path="/cart" element={<Cart />} />
+      </Route>
     </Route>
   )
 );

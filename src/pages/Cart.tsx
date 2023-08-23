@@ -2,6 +2,7 @@ import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 import Container from "../common/Container";
 import useCartContext from "../hooks/useCartContext";
+import { useMemo } from "react";
 
 const Cart = () => {
   const { orders } = useCartContext();
@@ -15,7 +16,7 @@ const Cart = () => {
     return total;
   };
 
-
+  // TODO quanity counter functionality for a cart product
 
   return (
     <section className="section-padding">

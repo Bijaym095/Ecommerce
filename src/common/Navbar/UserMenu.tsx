@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { AiOutlineSearch } from "react-icons/ai";
 import { BsCart2 } from "react-icons/bs";
 
 import { ProductCardProps } from "../../common/ProductCard";
+import { Button } from "../../common/Button";
 import useAuthContext from "../../hooks/useAuthContext";
 
 export const UserMenu: React.FC<UserMenuProp> = ({ cartItems }) => {
@@ -33,10 +33,6 @@ export const UserMenu: React.FC<UserMenuProp> = ({ cartItems }) => {
 
   return (
     <div className="space-x-2 md:space-x-4">
-      <button>
-        <AiOutlineSearch />
-      </button>
-
       <NavLink
         to="/cart"
         className="relative inline-block rounded-[50%] bg-gray-300 p-2 align-middle"
@@ -52,12 +48,9 @@ export const UserMenu: React.FC<UserMenuProp> = ({ cartItems }) => {
         )}
       </NavLink>
 
-      <button
-        className="bg-primary-500 px-2 py-1 font-medium text-white hover:bg-primary-600 md:px-4 md:py-2"
-        onClick={handleLogout}
-      >
+      <Button variant="primary" onClick={handleLogout}>
         Logout
-      </button>
+      </Button>
     </div>
   );
 };

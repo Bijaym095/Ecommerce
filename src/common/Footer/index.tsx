@@ -7,14 +7,15 @@ import AppStore from "../../assets/images/appstore.png";
 import Container from "../../common/Container";
 
 const Footer: React.FC = () => {
-  const footerTitleStyles = "font-bold text-[1.2rem] capitalize mb-4";
+  const footerTitleStyles =
+    "font-bold text-base md:text-[18px] capitalize mb-4";
 
   return (
-    <footer className="min-h-[350px] bg-black text-white">
+    <footer className="bg-black text-sm text-white md:text-base">
       {/* ============ footer-links ======== */}
-      <Container className="grid gap-4 py-8 sm:grid-cols-2 lg:grid-cols-4">
+      <Container className="grid gap-4 py-6 sm:grid-cols-2 md:py-8 lg:grid-cols-4">
         <div>
-          <NavLink className="mb-4 inline-block text-lg font-bold" to="/">
+          <NavLink className="text-lg mb-4 inline-block font-bold" to="/">
             Ecommerce
           </NavLink>
 
@@ -133,7 +134,7 @@ const Footer: React.FC = () => {
       {/* ================= footer-links ========== */}
 
       {/* ======== copyright ======= */}
-      <Container className="flex items-center justify-center py-5">
+      <Container className="flex items-center justify-center py-4">
         <p className="text-center">
           Copyright &copy; 2023 - All rights reserved.
         </p>

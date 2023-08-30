@@ -27,8 +27,8 @@ const Signin: React.FC = () => {
         setError(
           err.message.slice(
             err.message.indexOf("/") + 1,
-            err.message.lastIndexOf(")")
-          )
+            err.message.lastIndexOf(")"),
+          ),
         );
       }
     } finally {
@@ -54,7 +54,7 @@ const Signin: React.FC = () => {
 
   return (
     <section className="section-padding">
-      <Container className={"grid place-items-center"}>
+      <Container className="flex items-center justify-center">
         <div className="border border-primary-500 bg-white p-4 shadow-lg md:w-[400px]">
           <h2 className="section-title">Login To Your Account</h2>
 

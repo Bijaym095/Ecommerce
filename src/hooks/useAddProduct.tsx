@@ -25,7 +25,7 @@ const useAddProduct = () => {
 
       //   checking the newItem is already in the cart
       const newItemIndex = cartProducts.findIndex(
-        (item) => item.id === newItem.id
+        (item) => item.id === newItem.id,
       );
 
       if (newItemIndex !== -1) {

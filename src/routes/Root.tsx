@@ -5,13 +5,13 @@ import Footer from "../common/Footer";
 
 const RootLayout: React.FC = () => {
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main>
+      <main className="flex grow flex-col">
         <Outlet />
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 

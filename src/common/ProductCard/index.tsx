@@ -1,9 +1,6 @@
-import { useNavigate, Link } from "react-router-dom";
-import { AiFillStar } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
-import useAuthContext from "../../hooks/useAuthContext";
-import useCartContext from "../../hooks/useCartContext";
-import useAddProduct from "../../hooks/useAddProduct";
+import { formatCurrency, getStarRating } from "../../utils";
 
 const ProductCard: React.FC<ProductCardProps> = ({
   id,
@@ -11,71 +8,43 @@ const ProductCard: React.FC<ProductCardProps> = ({
   title,
   ratings,
   price,
+  category,
 }) => {
-  const navigate = useNavigate();
-
-  const { currentUser } = useAuthContext();
-  const { dispatch } = useCartContext();
-  const { addProductToFirestore } = useAddProduct();
-
-  const productDetails = {
-    id,
-    imgSrc,
-    title,
-    ratings,
-    price,
-    quantity: 1,
-  };
-
-  const getStarsByNumber = (count: number) => {
-    let stars = [];
-
-    for (let i = 0; i < count; i++) {
-      stars.push(<AiFillStar key={i} />);
-    }
-
-    return stars;
-  };
-
-  const handleAddProductCard = (newItem: ProductCardProps): void => {
-    if (currentUser) {
-      addProductToFirestore(newItem);
-      dispatch({ type: "ADD_PRODUCT", payload: newItem });
-    } else {
-      navigate("/signin");
-    }
-  };
-
   return (
-    <div key={id} className="mb-6 border border-primary-500 p-4">
-      <header>
+    <div className="h-full w-full p-4 md:w-1/2 lg:w-1/4">
+      <Link
+        to={`/product/${id}`}
+        className="relative block h-48 overflow-hidden rounded"
+      >
         <picture>
-          <img className="h-44 w-full object-cover" src={imgSrc} alt="" />
+          <img
+            className="block h-full w-full object-cover object-center"
+            src={imgSrc}
+            alt={title}
+          />
         </picture>
-      </header>
+      </Link>
 
-      <main className="p-2">
-        <h4 className="hover:text-secondary font-bold">
-          <Link className="text-[1.2rem]" to="/">
+      <div className="mt-4">
+        <h3 className="mb-1 text-sm uppercase tracking-widest text-gray-500">
+          {category}
+        </h3>
+
+        <h2 className="mb-1 text-xl font-medium text-gray-900">
+          <Link
+            className="md:duration-300 md:hover:text-secondary-400"
+            to={`/product/${id}`}
+          >
             {title}
           </Link>
-        </h4>
+        </h2>
 
-        <h5 className="mb-2 font-medium text-orange-500">$ {price}</h5>
+        <p className="mb-4">Rs {formatCurrency(price)}</p>
 
-        <p className="mb-2 flex space-x-1 text-yellow-400">
-          {getStarsByNumber(ratings)}
+        <p className="mb-4 flex gap-1 text-secondary-400">
+          {getStarRating(ratings)}
         </p>
-      </main>
-
-      <footer>
-        <button
-          className="block w-full bg-primary-400 py-2 text-center font-medium text-white transition-colors duration-300 hover:bg-primary-500"
-          onClick={() => handleAddProductCard(productDetails)}
-        >
-          Add to Cart
-        </button>
-      </footer>
+      </div>
     </div>
   );
 };
@@ -89,4 +58,6 @@ export type ProductCardProps = {
   ratings: 1 | 2 | 3 | 4 | 5;
   price: number;
   quantity: number;
+  category: "Men" | "Women" | "Accessories" | "Shoes" | "Watches";
+  isFeatured: boolean;
 };

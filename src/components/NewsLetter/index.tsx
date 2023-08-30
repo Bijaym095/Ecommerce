@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import Container from "../../common/Container";
+import { Button } from "../../common/Button";
 
 const NewsLetter: React.FC = () => {
   const { register, handleSubmit, reset } = useForm<NewsletterFormValues>();
@@ -10,28 +11,27 @@ const NewsLetter: React.FC = () => {
   };
 
   return (
-    <section className="section-padding">
+    <section className="section-padding pb-12 md:pb-[5rem]">
       <Container className="text-center">
         <h2 className="section-title">
           Subscribe to our Newsletter
-          <br />
-          <span className="text-base font-normal">
+          <span className="block text-base font-normal">
             Get timely updates from your favourite products.
           </span>
         </h2>
 
         <form onSubmit={handleSubmit(handleNewsletter)}>
           <input
-            className="form-input"
+            className="form-input mb-2"
             {...register("email")}
             type="email"
             placeholder="Get upto date with our newsletter"
             required
           />
 
-          <button className="ml-2 bg-primary-500 px-4 py-2 font-medium text-white duration-300">
+          <Button variant="primary" className="ml-4">
             Subscribe
-          </button>
+          </Button>
         </form>
       </Container>
     </section>

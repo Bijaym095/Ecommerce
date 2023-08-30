@@ -5,12 +5,30 @@ export default {
   theme: {
     container: {
       center: true,
+      padding: "16px",
     },
     screens: {
-      sm: "640px",
+      sm: "600px",
       md: "768px",
-      lg: "1024px",
-      xl: "1280px",
+      lg: "992px",
+      xl: "1200px",
+    },
+    maxWidth: {
+      sm: "580px",
+      md: "720px",
+      lg: "960px",
+      xl: "1140px",
+    },
+    fontFamily: {
+      sans: ["Roboto", "sans-serif"],
+    },
+    fontSize: {
+      sm: "0.833rem",
+      base: "1rem",
+      xl: "1.2rem",
+      "2xl": "1.44rem",
+      "3xl": "1.728rem",
+      "4xl": "2.074rem",
     },
     extend: {
       colors: {

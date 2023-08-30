@@ -13,31 +13,31 @@ const Banners: React.FC = () => {
       thumbnailImageSrc: BannerImage1,
       containerStyles: "w-full shrink-0 px-4 md:w-6/12",
       category: "Women",
-      linkTo: "/",
+      linkTo: "/shop?category=women",
     },
     {
       thumbnailImageSrc: BannerImage2,
       containerStyles: "w-full shrink-0 px-4 md:w-6/12",
       category: "Men",
-      linkTo: "/",
+      linkTo: "/shop?category=men",
     },
     {
       thumbnailImageSrc: BannerImage3,
       containerStyles: "w-full shrink-0 px-4 md:w-4/12",
       category: "Watches",
-      linkTo: "/",
+      linkTo: "/shop?category=watches",
     },
     {
       thumbnailImageSrc: BannerImage4,
       containerStyles: "w-full shrink-0 px-4 md:w-4/12",
       category: "Shoes",
-      linkTo: "/",
+      linkTo: "/shop?category=shoes",
     },
     {
       thumbnailImageSrc: BannerImage5,
       containerStyles: "w-full shrink-0 px-4 md:w-4/12",
       category: "Accessories",
-      linkTo: "/",
+      linkTo: "/shop?category=accessories",
     },
   ];
 
@@ -45,13 +45,13 @@ const Banners: React.FC = () => {
     "relative z-0 mb-4 max-h-60 overflow-hidden after:absolute after:inset-0 after:bg-black after:bg-opacity-50";
 
   return (
-    <section className="section-padding">
-      <Container>
+    <section>
+      <Container className="section-padding pt-12 md:pt-[5rem]">
         {/* ========= wrapper ========== */}
 
         <div className="-mx-4 flex flex-wrap">
           {BANNERS.map((content, index) => (
-            <article className={`${content.containerStyles}`} key={index}>
+            <div className={`${content.containerStyles}`} key={index}>
               <div className={`${bannerContainerStyle}`}>
                 {/* ============ thumbnail ======== */}
 
@@ -68,7 +68,7 @@ const Banners: React.FC = () => {
                   />
                 </div>
               </div>
-            </article>
+            </div>
           ))}
         </div>
 

@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   body {
-    @apply text-base leading-[1.5];
+    @apply font-sans text-base leading-[1.4];
   }
 
   label {
@@ -14,20 +16,29 @@
 
 @layer components {
   .container {
-    @apply px-4 sm:w-[600px] md:w-[720px] lg:w-[960px] xl:w-[1140px];
+    @apply max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl;
   }
 
   .section-padding {
-    @apply px-4 py-[32px] sm:py-[64px];
+    @apply py-5 md:py-8;
   }
 
   .section-title {
-    @apply mb-8 text-[1.728rem] font-bold;
+    @apply mb-14 text-3xl font-bold;
   }
 }
 
 * {
   margin: 0;
   padding: 0;
+}
+
+*,
+*:after,
+*:before {
   box-sizing: border-box;
+}
+
+body {
+  scroll-behavior: smooth;
 }

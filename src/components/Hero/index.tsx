@@ -1,14 +1,13 @@
 import { NavLink } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, A11y, Autoplay } from "swiper";
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+
+import { register } from "swiper/element/bundle";
 
 import HeroBg1 from "../../assets/images/hero-bg1.jpg";
 import HeroBg2 from "../../assets/images/hero-bg2.jpg";
 import Container from "../../common/Container";
+import { buttonVariants } from "../../common/Button";
+
+register();
 
 const Hero: React.FC = () => {
   const HERO_SLIDES: HeroSlide[] = [
@@ -26,26 +25,25 @@ const Hero: React.FC = () => {
 
   return (
     <section>
-      <Swiper
-        modules={[Navigation, Pagination, A11y, Autoplay]}
-        slidesPerView={1}
-        navigation
-        loop={true}
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 4000 }}
+      <swiper-container
+        navigation="true"
+        slides-per-view="1"
+        loop="true"
+        speed="300"
+        pagination="true"
+        autoplay="true"
       >
         {HERO_SLIDES.map((slide, index) => (
-          <SwiperSlide key={index}>
-            {/* ======== Slides ========= */}
+          <swiper-slide key={index}>
             <div
-              className="h-[600px] bg-cover bg-center bg-no-repeat"
+              className="h-[600px]  bg-cover bg-center bg-no-repeat"
               style={{
                 backgroundImage: `url(${slide.imgSrc})`,
               }}
             >
-              <Container className="section-padding flex min-h-screen flex-col justify-center">
+              <Container className="section-padding flex h-full flex-col justify-center">
                 <div>
-                  <h1 className="mb-8 text-[2.074rem] font-bold">
+                  <h1 className="mb-8 text-4xl font-bold">
                     <span className="text-base font-normal uppercase">
                       {slide.title}
                     </span>
@@ -56,7 +54,7 @@ const Hero: React.FC = () => {
                   <NavLink
                     type="button"
                     role="button"
-                    className="rounded-lg bg-primary px-4 py-2 font-medium text-white transition-colors duration-300"
+                    className={buttonVariants({ variant: "primary" })}
                     to="/"
                   >
                     Shop Now
@@ -64,10 +62,10 @@ const Hero: React.FC = () => {
                 </div>
               </Container>
             </div>
-            {/* ======== Slides ========= */}
-          </SwiperSlide>
+
+          </swiper-slide>
         ))}
-      </Swiper>
+      </swiper-container>
     </section>
   );
 };

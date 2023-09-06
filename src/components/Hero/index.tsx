@@ -1,13 +1,16 @@
 import { NavLink } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, A11y, Autoplay } from "swiper";
 
-import { register } from "swiper/element/bundle";
+import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import HeroBg1 from "../../assets/images/hero-bg1.jpg";
 import HeroBg2 from "../../assets/images/hero-bg2.jpg";
 import Container from "../../common/Container";
 import { buttonVariants } from "../../common/Button";
-
-register();
 
 const Hero: React.FC = () => {
   const HERO_SLIDES: HeroSlide[] = [
@@ -25,16 +28,16 @@ const Hero: React.FC = () => {
 
   return (
     <section>
-      <swiper-container
-        navigation="true"
-        slides-per-view="1"
-        loop="true"
-        speed="300"
-        pagination="true"
-        autoplay="true"
+      <Swiper
+        modules={[Navigation, Pagination, A11y, Autoplay]}
+        slidesPerView={1}
+        navigation
+        loop={true}
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 4000 }}
       >
         {HERO_SLIDES.map((slide, index) => (
-          <swiper-slide key={index}>
+          <SwiperSlide key={index}>
             <div
               className="h-[600px]  bg-cover bg-center bg-no-repeat"
               style={{
@@ -62,10 +65,9 @@ const Hero: React.FC = () => {
                 </div>
               </Container>
             </div>
-
-          </swiper-slide>
+          </SwiperSlide>
         ))}
-      </swiper-container>
+      </Swiper>
     </section>
   );
 };

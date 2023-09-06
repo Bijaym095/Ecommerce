@@ -20,6 +20,7 @@ const Signin: React.FC = () => {
     try {
       setError("");
       const result = await signin(data.email, data.password);
+      localStorage.setItem("isLoggedIn", "true");
 
       navigate("/");
     } catch (err) {
@@ -41,7 +42,7 @@ const Signin: React.FC = () => {
 
     try {
       const result = await signInWithPopup(auth, provider);
-
+      localStorage.setItem("isLoggedIn", "true");
       navigate("/");
     } catch (err) {
       console.error("Error while signingup with google", err);

@@ -17,6 +17,7 @@ const Signup: React.FC = () => {
       try {
         setError(null);
         const result = await signup(data.email, data.password);
+        localStorage.setItem("isLoggedIn", "true");
         navigate("/");
       } catch (err) {
         console.error(err);

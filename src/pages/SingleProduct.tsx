@@ -4,17 +4,16 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import RelatedProducts from "../components/RelatedProducts";
 import Container from "../common/Container";
 import { Button } from "../common/Button";
+import { ProductCardProps } from "../common/ProductCard";
 import products from "../data/products";
 import { formatCurrency, getStarRating } from "../utils";
-import useAddProduct from "../hooks/useAddProduct";
 import useCartContext from "../hooks/useCartContext";
-import { ProductCardProps } from "../common/ProductCard";
 import useAuthContext from "../hooks/useAuthContext";
 
 const SingleProduct: React.FC = () => {
   const [productQuantity, setProductQuantity] = useState<number>(1);
+
   const { id } = useParams();
-  const { addProductToFirestore } = useAddProduct();
   const { dispatch } = useCartContext();
   const { currentUser } = useAuthContext();
   const navigate = useNavigate();
@@ -23,9 +22,7 @@ const SingleProduct: React.FC = () => {
 
   const handleAddProduct = (newItem: ProductCardProps): void => {
     if (currentUser) {
-      addProductToFirestore(newItem);
       dispatch({ type: "ADD_PRODUCT", payload: newItem });
-      window.alert("Product Added to Cart");
     } else {
       navigate("/signin");
     }
@@ -108,11 +105,12 @@ const SingleProduct: React.FC = () => {
                 />
 
                 <Button
+                  disabled={productQuantity > 0 ? false : true}
                   onClick={() =>
                     handleAddProduct({ ...product, quantity: productQuantity })
                   }
                   variant="primary"
-                  className="ml-4"
+                  className="ml-4 disabled:cursor-not-allowed disabled:bg-primary-400"
                 >
                   Add to Cart
                 </Button>

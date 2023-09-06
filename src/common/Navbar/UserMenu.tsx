@@ -10,7 +10,8 @@ export const UserMenu: React.FC<UserMenuProp> = ({ cartItems }) => {
 
   const handleLogout = async () => {
     try {
-      logout();
+      await logout();
+      localStorage.removeItem("isLoggedIn");
     } catch (error) {
       console.log("Error while logging out the user", error);
     }

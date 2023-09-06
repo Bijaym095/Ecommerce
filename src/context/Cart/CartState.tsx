@@ -2,7 +2,7 @@ import { useEffect, useReducer } from "react";
 
 import { ProductCardProps } from "../../common/ProductCard";
 import useFetchOrders from "../../hooks/useFetchOrders";
-import useAuthContext from "../../hooks/useAuthContext";
+import useHandleCartAction from "../../hooks/useHandleCartAction";
 
 import CartContext from "./CartContext";
 
@@ -10,54 +10,61 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
     case "SET_PRODUCT":
       return {
-        ...state,
         orders: action.payload,
       };
 
     case "ADD_PRODUCT":
-      const productToAddExists = state.orders.find(
-        (order) => order.id === action.payload.id
-      );
-
+      const { id, quantity } = action.payload;
+      const productToAddExists = state.orders.find((order) => order.id === id);
       let addUpdatedOrders;
 
-      if (productToAddExists) {
-        addUpdatedOrders = state.orders.map((order) =>
-          order.id === action.payload.id
-            ? { ...order, quantity: order.quantity + 1 }
-            : order
-        );
-      } else {
+      if (!productToAddExists) {
         addUpdatedOrders = [...state.orders, action.payload];
+      } else {
+        addUpdatedOrders = state.orders.map((order) =>
+          order.id === id
+            ? {
+                ...order,
+                // If the added product's quantity is 1, increase the quantity by 1 else add the added product's quantity to the current quantity
+                quantity:
+                  quantity === 1
+                    ? order.quantity + 1
+                    : order.quantity + quantity,
+              }
+            : order,
+        );
       }
 
       return {
-        ...state,
         orders: addUpdatedOrders,
       };
 
     case "DELETE_PRODUCT":
-      const productToDeleteExists = state.orders.find(
-        (order) => order.id === action.payload.id
+      const updatedOrdersAfterDeletion = state.orders.filter(
+        (order) => order.id !== action.payload,
       );
 
-      let deleteUpdatedOrders;
+      return {
+        orders: updatedOrdersAfterDeletion,
+      };
 
-      if (productToDeleteExists) {
-        deleteUpdatedOrders = state.orders.map((order) =>
-          order.id === action.payload.id
-            ? { ...order, quantity: order.quantity - 1 }
-            : order
+    case "UPDATE_PRODUCT":
+      const updatedProducts = action.payload;
+      const updatedOrders = [...state.orders];
+
+      for (const product of updatedProducts) {
+        const updateOrderIndex = updatedOrders.findIndex(
+          (order) => order.quantity !== product.quantity,
         );
-      } else {
-        deleteUpdatedOrders = state.orders.filter(
-          (order) => order.id !== action.payload.id
-        );
+
+        if (updateOrderIndex !== -1) {
+          // If the product exists in state.orders, update its quantity
+          updatedOrders[updateOrderIndex].quantity = product.quantity;
+        }
       }
 
       return {
-        ...state,
-        orders: deleteUpdatedOrders,
+        orders: updatedOrders,
       };
 
     default:
@@ -65,20 +72,24 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
   }
 };
 
-const CartState = ({ children }: CartStateProp) => {
+const CartState = ({ children }: CartStateProps) => {
   const [state, dispatch] = useReducer(cartReducer, {
     orders: [],
   });
-  const { currentUser } = useAuthContext();
-  const { fetchedOrders } = useFetchOrders();
+  const handleCartAction = useHandleCartAction();
+  const { fetchedOrders, isLoading } = useFetchOrders();
 
+  // setting the default value of orders that is fetched from fiestore after loading
   useEffect(() => {
-    if (fetchedOrders.length > 0) {
+    if (!isLoading) {
       dispatch({ type: "SET_PRODUCT", payload: fetchedOrders });
-    } else {
-      dispatch({ type: "SET_PRODUCT", payload: [] });
     }
-  }, [fetchedOrders, currentUser]);
+  }, [fetchedOrders, isLoading]);
+
+  // updating the orders in the firestore on every change in orders
+  useEffect(() => {
+    handleCartAction(state.orders);
+  }, [state.orders]);
 
   return (
     <CartContext.Provider value={{ ...state, dispatch }}>
@@ -87,7 +98,7 @@ const CartState = ({ children }: CartStateProp) => {
   );
 };
 
-type CartStateProp = {
+type CartStateProps = {
   children: React.ReactNode;
 };
 
@@ -100,4 +111,5 @@ type CartState = {
 export type CartAction =
   | { type: "SET_PRODUCT"; payload: ProductCardProps[] }
   | { type: "ADD_PRODUCT"; payload: ProductCardProps }
-  | { type: "DELETE_PRODUCT"; payload: ProductCardProps };
+  | { type: "DELETE_PRODUCT"; payload: string }
+  | { type: "UPDATE_PRODUCT"; payload: ProductCardProps[] };

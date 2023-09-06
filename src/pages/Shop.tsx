@@ -74,7 +74,7 @@ const Shop = () => {
 
           <div className="lg:flex">
             <aside
-              className={`fixed -left-[250px] top-0 z-[98] h-full w-[250px] border border-black bg-white px-6 py-10 transition-all duration-300 ease-in lg:static lg:z-0 ${
+              className={`fixed -left-[250px] top-0 z-[100] h-full w-[250px] bg-white px-6 py-10 transition-all duration-300 ease-in lg:static lg:z-0 ${
                 toggleFilter
                   ? "left-0"
                   : "p-4 lg:block lg:w-3/12 lg:place-self-start"
